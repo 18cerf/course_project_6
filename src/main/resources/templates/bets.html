@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>КУРСОВОЙ ПРОЕКТ</title>
+    <link rel="stylesheet" th:href="@{/styles/style_login.css}"/>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="\static\styles\style_login.css"
+          th:href="@{/styles/style_login.css}">
+</head>
+<body>
+<div class="section">
+    <h2>Вы можете поставить на эти события:</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Заголовок</th>
+            <th>Короткое описание</th>
+            <th>Полное описание</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bet : ${bets}">
+            <td th:text="${bet.header}"></td>
+            <td th:text="${bet.shortDescription}"></td>
+            <td th:text="${bet.description}"></td>
+            <td>
+                <form th:action="@{/bets/place_bet}" method="post">
+                    <input name="sum" th:value="${sum}"/>
+                    <input type="hidden" name="id" th:value="${bet.id}"/>
+                    <button type="submit">Играть</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <h2>Ставки в игре:</h2>
+        <thead>
+        <tr>
+            <th>Заголовок ставки</th>
+            <th>Короткое описание</th>
+            <th>Полное описание</th>
+            <th>Сумма</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="userBet : ${userBets}">
+            <td th:text="${userBet.bet.header}"></td>
+            <td th:text="${userBet.bet.shortDescription}"></td>
+            <td th:text="${userBet.bet.description}"></td>
+            <td th:text="${userBet.betSum}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <h2>Уже сыгранные ставки:</h2>
+        <thead>
+        <tr>
+            <th>Заголовок ставки</th>
+            <th>Короткое описание</th>
+            <th>Полное описание</th>
+            <th>Сумма</th>
+            <th>Выиграл</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="userBet : ${inactiveUserBets}">
+            <td th:text="${userBet.bet.header}"></td>
+            <td th:text="${userBet.bet.shortDescription}"></td>
+            <td th:text="${userBet.bet.description}"></td>
+            <td th:text="${userBet.betSum}"></td>
+            <td th:text="${userBet.bet.winResult}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form th:action="@{/bets/result}" class="find_users">
+        <button class="button">Рассчитать!</button>
+    </form>
+    <form th:action="@{/home}" class="find_users">
+        <button class="button">На главную!</button>
+    </form>
+
+    <form th:action="@{/bets/generate}" class="find_users">
+        <button class="button">Новые ставки!</button>
+    </form>
+
+</div>
+</body>
+</html>
