@@ -36,9 +36,6 @@ public class HomeController {
         return "home";
     }
 
-    /*
-     * Метод принимает новое изображение пользователя, проверяет не пустой ли он, и затем сохраняет его в БД.
-     */
     @PostMapping("/image")
     public String uploadUserImage(@RequestParam("file") MultipartFile image,
                                   @AuthenticationPrincipal User user) {

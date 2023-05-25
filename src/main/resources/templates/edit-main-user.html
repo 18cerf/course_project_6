@@ -25,10 +25,8 @@
                      th:if="${#fields.hasErrors('username')}"
                      th:errors="*{username}">Ошибка, никнейм должен содержать больше 5 символов
                 </div>
-
                 <div class="validationError" th:text="${error_message}">Пользователь с таким логином уже существует</div>
             </div>
-
             <div class="info">
                 <label for="password">Новый Пароль: </label>
                 <br>
@@ -38,10 +36,6 @@
                      th:errors="*{password}">Ошибка, пароль должен содержать больше 6 символов
                 </div>
             </div>
-
-            <!--    <label for="confirm">Confirm password: </label>-->
-            <!--    <input type="password" name="confirm"/><br/>-->
-
             <div class="info">
                 <label for="name">Новое Имя: </label>
                 <br>
@@ -51,7 +45,6 @@
                      th:errors="*{name}">Имя должно начинаться с большой буквы
                 </div>
             </div>
-
             <div class="info">
                 <label for="lastname">Новая Фамилия: </label>
                 <br>
@@ -61,7 +54,6 @@
                      th:errors="*{lastname}">Фамилия должна начинаться с большой буквы
                 </div>
             </div>
-
             <div class="info">
                 <label for="phoneNumber">Новый Номер телефона: </label>
                 <br>
@@ -71,7 +63,6 @@
                      th:errors="*{phoneNumber}">Введите, пожалуйста, верный телефон
                 </div>
             </div>
-
             <div class="info">
                 <label for="email">Новый email: </label>
                 <br>
@@ -81,20 +72,10 @@
                      th:errors="*{email}">Введите, пожалуйста, верную почту
                 </div>
             </div>
-
-            <!--    <div>-->
-            <!--        <label for="hobbies">Your hobbies: </label>-->
-            <!--        <input type="text" th:field="*{hobbies}" id="hobbies"/>-->
-            <!--    </div>-->
-
-
             <input type="submit" value="Изменить" class="register_button"/>
-
             <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
-
         </form>
     </div>
-
 </div>
 </body>
 </html>

@@ -13,13 +13,11 @@
     <div class="header">
         <h1>Войти</h1>
     </div>
-
     <div class="main">
         <div class="no_account">
             <p>Нету аккаунта? Нажмите <a href="/register" th:href="@{/register}">здесь</a>, чтобы зарегистрироваться.
             </p>
         </div>
-
         <form method="POST" th:action="@{/login}" class="loginForm">
             <div class="user_contacts">
                 <label for="username">Логин:</label><br>
@@ -32,15 +30,11 @@
             <div class="sign_in">
                 <input type="submit" value="Войти" class="button"/>
             </div>
-
             <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
         </form>
-
     </div>
-
     <br>
     <br>
-
     <div th:if="${param.error}" class="message">
         Неверный никнейм или пароль.
     </div>

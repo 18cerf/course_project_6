@@ -28,9 +28,6 @@ public class RegistrationController {
     private final PasswordEncoder passwordEncoder;
     private final UserService userService;
 
-    /*
-     * Внедряем бины userRepository и passwordEncoder
-     */
     public RegistrationController(
 
             PasswordEncoder passwordEncoder,
@@ -40,32 +37,19 @@ public class RegistrationController {
         this.userService = userService;
     }
 
-    /*
-     * ModelAttribute "registerForm" предназначен для заполнения его данными о User
-     * + валидации входящей информации о новом User.
-     *
-     */
+
     @ModelAttribute(name = "registerForm")
     public User registrationForm() {
         return new User();
     }
 
-    /*
-     * Возвращает представление для регистрации.
-     */
+
     @GetMapping
     public String registerForm() {
         return "registration";
     }
 
 
-    /*
-     *
-     * В случае успешной валидации данных происходит редирект на страницу входа
-     *
-     * Если данные валидацию не прошли, возвращается на страницу регистрации.
-     *
-     */
     @PostMapping
     public String processRegistration(@ModelAttribute("registerForm") @Valid User newUser,
                                       Errors errors,
@@ -82,7 +66,6 @@ public class RegistrationController {
             model.addAttribute("error_message", "Пользователь с таким логином уже существует");
             return "registration";
         }
-
 
         return "redirect:/login";
 

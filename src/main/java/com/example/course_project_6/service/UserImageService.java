@@ -13,9 +13,6 @@ import java.util.Base64;
 import java.util.Optional;
 
 
-/*
- * Сервис-класс для работы с UserImageRepository
- */
 @Service
 @Slf4j
 public class UserImageService {
@@ -28,9 +25,6 @@ public class UserImageService {
         this.userRepository = userRepository;
     }
 
-    /*
-     * Метод сохраняет картинку пользователя в базу
-     */
     public void saveUserImage(MultipartFile imageData, User user) {
         deleteLatestUserImage(user);
 
@@ -52,9 +46,6 @@ public class UserImageService {
         }
     }
 
-    /*
-     * Метод возвращает картинку по ID пользователя
-     */
     public String getUserImage(Long userId) {
         Optional<UserImage> userImageOptional = userImageRepository.findFirstByUserId(userId);
         if (userImageOptional.isPresent()) {
