@@ -7,6 +7,7 @@ import com.example.course_project_6.service.UserBetService;
 import com.example.course_project_6.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.integration.IntegrationProperties;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,7 +48,8 @@ public class BetsController {
     public String placeBet(@RequestParam("sum") double sum,
                            @RequestParam("id") long id,
                            @AuthenticationPrincipal User user,
-                           Model model) {
+                           Model model,
+                           IntegrationProperties.Error error) {
 
         userService.saveNewUserBet(userService.findUserById(user.getId()), betService.findBetById(id), sum);
         userService.withdrawBalance(user.getId(), sum);

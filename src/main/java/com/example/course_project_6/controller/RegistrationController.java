@@ -72,7 +72,6 @@ public class RegistrationController {
                                       Model model,
                                       BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            log.info("Неудачная попытка валидации с данными: {}", newUser.toString());
             model.addAttribute("message", "Ошибка валидации данных, проверьте правильность вводимых полей");
             return "registration";
         }

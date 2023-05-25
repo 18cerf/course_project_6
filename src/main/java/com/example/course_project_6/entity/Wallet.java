@@ -19,10 +19,10 @@ public class Wallet {
 
     private double balance;
 
-//    @PrePersist
-//    public void setDefaultValues() {
-//        if (balance == 0.0) {
-//            balance = 100.0; // устанавливаем значение по умолчанию
-//        }
-//    }
+    @PrePersist
+    public void setDefaultValues() {
+        if (balance == 0.0) {
+            balance = 100.0; // устанавливаем значение по умолчанию
+        }
+    }
 }
