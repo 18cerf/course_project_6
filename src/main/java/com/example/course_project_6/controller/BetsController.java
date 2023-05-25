@@ -51,9 +51,8 @@ public class BetsController {
                            Model model,
                            IntegrationProperties.Error error) {
 
-        userService.saveNewUserBet(userService.findUserById(user.getId()), betService.findBetById(id), sum);
         userService.withdrawBalance(user.getId(), sum);
-
+        userService.saveNewUserBet(userService.findUserById(user.getId()), betService.findBetById(id), sum);
 
         return "redirect:/bets";
     }
